@@ -14,25 +14,26 @@ export class Projects {
       name: "Doctor Appointment Booking System",
       description: "A Full-stack Appointment booking system built with Angular and NodeJS (Express).",
       github: "https://github.com/Adan694/DABS-Angular.git",
-      demo: "#"
+      demo: "https://fyp-sage.vercel.app/",
+      fullstack: true
     },
      {
       name: "Wallpapers Website",
       description: "A modern Wallpaper website built with Angular and .NET Core.",
       github: "https://github.com/Adan694/WallPaperApp.git",
-      demo: "#"
-    },
+demo: null,
+  fullstack: true    },
     {
       name: "Portfolio Website",
       description: "A modern portfolio website built with Angular.",
-      github: "https://github.com/yourusername/portfolio",
-      demo: "#"
-    },
+      github: "https://github.com/Adan694/Portfolio.git",
+demo: null,
+  fullstack: true    },
     {
       name: "Pharmacy Management System",
       description: "A full-stack pharmacy management system with Angular and .NET Core.",
       github: "https://github.com/Adan694/Pharmacy-Management-System.git",
-      demo: "#"
-    }
+demo: null,
+  fullstack: true    }
   ];
 }

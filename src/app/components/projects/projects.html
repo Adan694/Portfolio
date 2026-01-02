@@ -7,6 +7,7 @@
       <div class="project-links">
         <a [href]="project.github" target="_blank">GitHub</a>
         <a *ngIf="project.demo" [href]="project.demo" target="_blank">Live Demo</a>
+        <span *ngIf="!project.demo && project.fullstack">(Frontend requires backend)</span>
       </div>
     </div>
   </div>
