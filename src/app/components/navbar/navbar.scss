@@ -1,0 +1,95 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    /* full width */
+    padding: 0.8rem 2rem;
+    /* reduced padding */
+    position: sticky;
+    top: 0;
+    background-color: var(--navbar-bg);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    /* floating effect */
+    border-radius: 0 0 15px 15px;
+    /* slightly smaller rounding */
+    z-index: 100;
+    transition: all 0.3s;
+
+    .logo {
+        font-size: 1.8rem;
+        /* slightly smaller logo */
+        color: var(--accent-color);
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+
+    ul {
+        display: flex;
+        gap: 2rem;
+        /* slightly smaller gap */
+        list-style: none;
+
+        li a {
+            position: relative;
+            color: var(--navbar-text);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.4rem 0;
+            /* slightly smaller padding */
+            transition: color 0.3s;
+
+            &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -4px;
+                width: 0;
+                height: 2px;
+                background: var(--accent-color);
+                transition: width 0.3s;
+                border-radius: 2px;
+            }
+
+            &:hover::after,
+            &.active::after {
+                width: 100%;
+            }
+
+            &:hover {
+                color: var(--accent-color);
+            }
+        }
+    }
+
+    .theme-toggle {
+        background: var(--accent-color);
+        border: none;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        /* smaller button */
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s;
+
+        &:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+        }
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        padding: 1rem;
+        /* smaller mobile padding */
+
+        ul {
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 0.8rem;
+        }
+    }
+}
