@@ -9,6 +9,12 @@ import { NgForOf } from '@angular/common'; // Import NgForOf
   styleUrls: ['./skills.scss'] // <-- fixed
 })
 export class Skills {
+  // In your component.ts file
+ngOnInit() {
+  console.log('Current theme:', document.body.getAttribute('data-theme'));
+  console.log('Is dark mode?', document.body.hasAttribute('data-theme="dark"'));
+  }
+  
   skillCategories = [
     {
       title: 'Frontend',

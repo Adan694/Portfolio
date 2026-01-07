@@ -1,7 +1,7 @@
 /* About Section - Beautiful Design */
 .about {
     min-height: 100vh;
-    width: 100%;
+    width: auto;
     padding: 6rem 2rem;
     position: relative;
     overflow: hidden;
@@ -13,6 +13,7 @@
             rgba(243, 232, 255, 0.1) 0%,
             rgba(254, 226, 226, 0.08) 100%);
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: -40px;
 }
 
 /* Animated Background Gradient */

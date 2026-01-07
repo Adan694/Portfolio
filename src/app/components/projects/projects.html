@@ -1,13 +1,22 @@
 <section class="projects">
   <h2>My Projects</h2>
+
   <div class="project-grid">
     <div class="project-card" *ngFor="let project of projects">
       <h3>{{ project.name }}</h3>
+
+      <!-- Tech Stack -->
+      <div class="project-tech">
+        <strong>Tech Stack:</strong>
+        <span>{{ project.techStack }}</span>
+      </div>
+
+      <!-- Description -->
       <p>{{ project.description }}</p>
+
+      <!-- GitHub Button Only -->
       <div class="project-links">
         <a [href]="project.github" target="_blank">GitHub</a>
-        <a *ngIf="project.demo" [href]="project.demo" target="_blank">Live Demo</a>
-        <span *ngIf="!project.demo && project.fullstack">(Frontend requires backend)</span>
       </div>
     </div>
   </div>
