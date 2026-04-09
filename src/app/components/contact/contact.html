@@ -2,20 +2,20 @@
   <h2>Contact Me</h2>
 
   <form (ngSubmit)="sendEmail($event)">
-    <input type="text" placeholder="Your Name" [(ngModel)]="formData.name" name="name" required />
+    <input type="text" name="name" placeholder="Your Name" [(ngModel)]="formData.name" required />
 
     <input
       type="email"
+      name="email"
       placeholder="Your Email"
       [(ngModel)]="formData.email"
-      name="email"
       required
     />
 
     <textarea
+      name="message"
       placeholder="Your Message"
       [(ngModel)]="formData.message"
-      name="message"
       required
     ></textarea>
 
@@ -23,12 +23,12 @@
       {{ isSubmitting ? 'Sending...' : 'Send Message' }}
     </button>
 
-    <div *ngIf="submitStatus === 'success'" class="success-message">
-      ✅ Message sent successfully! I'll get back to you soon.
+    <div *ngIf="submitStatus === 'success'" style="color: green; margin-top: 10px">
+      ✓ Message sent successfully!
     </div>
 
-    <div *ngIf="submitStatus === 'error'" class="error-message">
-      ❌ Failed to send message. Please try again.
+    <div *ngIf="submitStatus === 'error'" style="color: red; margin-top: 10px">
+      ✗ Failed to send. Check console for details.
     </div>
   </form>
 </section>
