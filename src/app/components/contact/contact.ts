@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import emailjs from '@emailjs/browser';  // ✅ Correct import
+import emailjs from '@emailjs/browser';
 
 @Component({
   selector: 'app-contact',
@@ -19,12 +19,13 @@ export class Contact {
   isSubmitting = false;
   submitStatus: 'idle' | 'success' | 'error' = 'idle';
 
-  private readonly EMAILJS_PUBLIC_KEY = '10_aVByKcsOktiTM1';
+  // Your credentials - verify these are EXACTLY correct
+  private readonly EMAILJS_PUBLIC_KEY = 'SRzQEguvM-wEHhiaV';
   private readonly EMAILJS_SERVICE_ID = 'service_uel98mq';
   private readonly EMAILJS_TEMPLATE_ID = 'template_02a1b56';
 
   constructor() {
-    // ✅ Correct initialization for v3+
+    // Initialize with ONLY the public key (private key is disabled)
     emailjs.init({
       publicKey: this.EMAILJS_PUBLIC_KEY,
     });
@@ -38,7 +39,7 @@ export class Contact {
     this.submitStatus = 'idle';
 
     try {
-      // ✅ For v3+, don't pass publicKey separately
+      // Do NOT pass the public key here again
       const response = await emailjs.send(
         this.EMAILJS_SERVICE_ID,
         this.EMAILJS_TEMPLATE_ID,
