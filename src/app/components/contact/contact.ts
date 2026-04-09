@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import emailjs from '@emailjs/browser';
 
@@ -9,7 +9,7 @@ import emailjs from '@emailjs/browser';
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
 })
-export class Contact implements OnInit {
+export class Contact {
   formData = {
     name: '',
     email: '',
@@ -23,18 +23,18 @@ export class Contact implements OnInit {
   private readonly EMAILJS_SERVICE_ID = 'service_uel98mq';
   private readonly EMAILJS_TEMPLATE_ID = 'template_02a1b56';
 
-  ngOnInit() {
-    // THIS IS IMPORTANT - Initialize EmailJS
-    emailjs.init(this.EMAILJS_PUBLIC_KEY);
-    console.log('EmailJS initialized successfully'); // Check console for this
+  constructor() {
+    // Initialize EmailJS with your public key
+    emailjs.init({
+      publicKey: this.EMAILJS_PUBLIC_KEY,
+    });
+    console.log('EmailJS initialized');
   }
 
   async sendEmail(event: Event) {
     event.preventDefault();
     
-    // Check if form is empty
     if (!this.formData.name || !this.formData.email || !this.formData.message) {
-      console.error('Form fields are empty');
       this.submitStatus = 'error';
       return;
     }
@@ -42,26 +42,24 @@ export class Contact implements OnInit {
     this.isSubmitting = true;
     this.submitStatus = 'idle';
 
-    console.log('Sending email with data:', {
-      from_name: this.formData.name,
-      from_email: this.formData.email,
-      message: this.formData.message
-    });
+    console.log('Sending email...');
 
     try {
-      // DO NOT pass the public key here since we already initialized it
+      // For EmailJS V3 - use different method
       const response = await emailjs.send(
         this.EMAILJS_SERVICE_ID,
         this.EMAILJS_TEMPLATE_ID,
         {
           from_name: this.formData.name,
           from_email: this.formData.email,
-          message: this.formData.message
+          message: this.formData.message,
+        },
+        {
+          publicKey: this.EMAILJS_PUBLIC_KEY, // Pass public key here for V3
         }
-        // ❌ REMOVED: this.EMAILJS_PUBLIC_KEY from here
       );
       
-      console.log('SUCCESS! Email sent:', response);
+      console.log('SUCCESS!', response);
       this.submitStatus = 'success';
       this.formData = { name: '', email: '', message: '' };
       
@@ -70,7 +68,7 @@ export class Contact implements OnInit {
       }, 5000);
       
     } catch (error) {
-      console.error('FAILED to send email. Error details:', error);
+      console.error('FAILED:', error);
       this.submitStatus = 'error';
       
       setTimeout(() => {
