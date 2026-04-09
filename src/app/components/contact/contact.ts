@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import emailjs from '@emailjs/browser';
 
@@ -10,6 +10,8 @@ import emailjs from '@emailjs/browser';
   styleUrl: './contact.scss',
 })
 export class Contact {
+  @ViewChild('contactForm') contactForm!: ElementRef;
+  
   formData = {
     name: '',
     email: '',
@@ -24,44 +26,32 @@ export class Contact {
   private readonly EMAILJS_TEMPLATE_ID = 'template_02a1b56';
 
   constructor() {
-    // Initialize EmailJS with your public key
     emailjs.init({
       publicKey: this.EMAILJS_PUBLIC_KEY,
     });
-    console.log('EmailJS initialized');
   }
 
   async sendEmail(event: Event) {
     event.preventDefault();
     
-    if (!this.formData.name || !this.formData.email || !this.formData.message) {
-      this.submitStatus = 'error';
-      return;
-    }
-    
     this.isSubmitting = true;
     this.submitStatus = 'idle';
 
-    console.log('Sending email...');
-
     try {
-      // For EmailJS V3 - use different method
-      const response = await emailjs.send(
+      // Use sendForm instead of send
+      const response = await emailjs.sendForm(
         this.EMAILJS_SERVICE_ID,
         this.EMAILJS_TEMPLATE_ID,
+        this.contactForm.nativeElement,
         {
-          from_name: this.formData.name,
-          from_email: this.formData.email,
-          message: this.formData.message,
-        },
-        {
-          publicKey: this.EMAILJS_PUBLIC_KEY, // Pass public key here for V3
+          publicKey: this.EMAILJS_PUBLIC_KEY,
         }
       );
       
       console.log('SUCCESS!', response);
       this.submitStatus = 'success';
       this.formData = { name: '', email: '', message: '' };
+      this.contactForm.nativeElement.reset();
       
       setTimeout(() => {
         this.submitStatus = 'idle';

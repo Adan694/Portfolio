@@ -1,12 +1,18 @@
 <section class="contact">
   <h2>Contact Me</h2>
 
-  <form (ngSubmit)="sendEmail($event)">
-    <input type="text" name="name" placeholder="Your Name" [(ngModel)]="formData.name" required />
+  <form #contactForm (ngSubmit)="sendEmail($event)">
+    <input
+      type="text"
+      name="from_name"
+      placeholder="Your Name"
+      [(ngModel)]="formData.name"
+      required
+    />
 
     <input
       type="email"
-      name="email"
+      name="from_email"
       placeholder="Your Email"
       [(ngModel)]="formData.email"
       required
@@ -28,7 +34,7 @@
     </div>
 
     <div *ngIf="submitStatus === 'error'" style="color: red; margin-top: 10px">
-      ✗ Failed to send. Check console for details.
+      ✗ Failed to send. Please try again.
     </div>
   </form>
 </section>
