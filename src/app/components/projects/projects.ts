@@ -31,7 +31,7 @@ export class Projects {
       description: "Modern portfolio with smooth animations and dark/light mode toggle. Features optimized performance and interactive projects.",
       techStack: "Angular, TypeScript, HTML, SCSS",
       github: "https://github.com/Adan694/Portfolio.git",
-      demo: "portfolio-alpha-nine-3r7e4twqr1.vercel.app",
+      demo: "https://portfolio-alpha-nine-3r7e4twqr1.vercel.app/",
       fullstack: true
     },
     {

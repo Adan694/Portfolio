@@ -384,6 +384,30 @@
         gap: 2rem;
     }
 }
+/* Demo Button Style */
+.project-links .demo-btn {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.project-links .demo-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+/* No Demo Message */
+.project-links .no-demo-msg {
+    padding: 0.7rem 1.5rem;
+    border-radius: 12px;
+    background: rgba(128, 128, 128, 0.15);
+    color: #888;
+    font-size: 0.9rem;
+}
 @media (max-width: 360px) {
     .project-card {
         padding: 1.3rem;
