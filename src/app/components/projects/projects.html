@@ -6,22 +6,19 @@
       <h3>{{ project.name }}</h3>
 
       <!-- Tech Stack -->
-      <div class="project-links">
-        <a [href]="project.github" target="_blank">GitHub</a>
-
-        <!-- Demo button - shows only if demo link exists -->
-        <a *ngIf="project.demo" [href]="project.demo" target="_blank" class="demo-btn">Live Demo</a>
-
-        <!-- Message if no demo yet -->
-        <span *ngIf="!project.demo" class="no-demo-msg">Demo coming soon</span>
+      <div class="project-tech">
+        <strong>Tech Stack:</strong>
+        <span>{{ project.techStack }}</span>
       </div>
 
       <!-- Description -->
       <p>{{ project.description }}</p>
 
-      <!-- GitHub Button Only -->
+      <!-- Links Container - ONLY ONE! -->
       <div class="project-links">
         <a [href]="project.github" target="_blank">GitHub</a>
+        <a *ngIf="project.demo" [href]="project.demo" target="_blank" class="demo-btn">Live Demo</a>
+        <span *ngIf="!project.demo" class="no-demo-msg">Demo coming soon</span>
       </div>
     </div>
   </div>
