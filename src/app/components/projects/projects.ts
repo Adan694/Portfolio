@@ -23,7 +23,7 @@ export class Projects {
       description: "Modern wallpaper discovery platform with advanced search and filtering. Includes user authentication, favorites collection, and responsive design for all devices.",
       techStack: "Angular, TypeScript, .NET Core, REST API",
       github: "https://github.com/Adan694/WallPaperApp.git",
-      demo: null,
+      demo: "https://wall-paper-app-2pce.vercel.app/",
       fullstack: true
     },
     {
